@@ -12,20 +12,30 @@ import forca5 from "../assets/forca5.png";
 import forca6 from "../assets/forca6.png";
 
 export default function App() {
+  const [aparecerNaTela, setAparecerNaTela] = useState("");
+  const [habilitarTeclas, setHabilitarTeclas] = useState(true);
+  const [classeTeclado, setClasseTeclado] = useState("desabilitado");
+  const [erros, setErros] = useState(0);
+  const [imagem, setImagem] = useState(forca0)
+  function iniciar(){
+    const posicaoNovaPalavra = Math.round(Math.random() * palavras.length)
+    const novaPalavra = palavras[posicaoNovaPalavra]
+    console.log(novaPalavra);
+    let tracos= " _";
+    setAparecerNaTela(tracos.repeat(novaPalavra.length));
+    setHabilitarTeclas(false);
+    setClasseTeclado("habilitado");
+    setErros(0);
+  }
 
-  const posicaoNovaPalavra = Math.round(Math.random() * palavras.length)
-  const novaPalavra = palavras[posicaoNovaPalavra]
-  console.log(novaPalavra);
-  let tracos= " _";
-    const [aparecerNaTela, setAparecerNaTela] = useState(tracos.repeat(novaPalavra.length));
-    //let mudanca = aparecerNaTela;
-    // mudanca[2] = "A"
-    // setAparecerNaTela(mudanca)
+  function jogar(){
+    alert("funciona")
+  }
  
   return (
     <div className="corpoJogo">
-      <Jogo imagem={forca0} palavra={aparecerNaTela}/>
-      <Letras/>
+      <Jogo imagem={imagem} palavra={aparecerNaTela} iniciaJogo={iniciar}/>
+      <Letras habilitado={habilitarTeclas} classe = {classeTeclado} jogar={jogar}/>
     </div>
   );
 }
