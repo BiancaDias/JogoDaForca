@@ -37,7 +37,7 @@ export default function App() {
   return (
     <div className="corpoJogo">
       <Jogo imagem={imagem} palavra={aparecerNaTela} iniciaJogo={iniciar} />
-      <Letras habilitado={habilitarTeclas} classe={classeTeclado} setLetraAtual={setLetraAtual} erros={erros} setImagem={setImagem} novaPalavra={novaPalavra} setErros={setErros} imagens={imagens}/>
+      <Letras habilitado={habilitarTeclas} classe={classeTeclado} setLetraAtual={setLetraAtual} erros={erros} setImagem={setImagem} novaPalavra={novaPalavra} setErros={setErros} imagens={imagens} palavra={aparecerNaTela} setAparecerNaTela={setAparecerNaTela}/>
     </div>
   );
 }
