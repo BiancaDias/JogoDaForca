@@ -39,7 +39,7 @@ img{
   margin: 50px
 }
 
-p{
+.palavra{
   font-family: 'Noto Sans', sans-serif;
   font-weight: 700;
   font-size: 50px;
@@ -72,4 +72,12 @@ p{
   border: 1px solid #7AA7C7;
   border-radius: 3px;
   color: #39739D;
+}
+
+.vermelho{
+  color: #FF0000;
+}
+
+.verde{
+  color: #27AE60;
 }

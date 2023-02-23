@@ -4,10 +4,10 @@ export default function Letras(props) {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
         "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     const arrayDePosicoes = [];
-    const [letrasPressionadas, setLetrasPressionadas] = useState([]);
+    
     let palavraAtualizada = props.palavra;
     function letrasPress(letra) {
-        setLetrasPressionadas([...letrasPressionadas, letra]);
+        props.setLetrasPressionadas([...props.letrasPressionadas, letra]);
         props.setLetraAtual(letra);
         if (props.erros <= 6) {
             if (props.novaPalavra.includes(letra) === true) {
@@ -19,7 +19,7 @@ export default function Letras(props) {
                     pos = props.novaPalavra.indexOf(letra, pos + 1);
                 }
                 let i=0;
-                // let j=0;
+                
                 console.log(arrayDePosicoes);
                 console.log(props.palavra)
 
@@ -29,11 +29,24 @@ export default function Letras(props) {
                     i++
                 }
                 props.setAparecerNaTela(array.join(""))
+                if(props.aparecerNaTela.length === props.novaPalavra.length){
+                    props.finalizarJogo()
+                }
+                props.setAcertos(props.acertos + arrayDePosicoes.length)
+                console.log(props.acertos + arrayDePosicoes.length);
+                if(props.acertos + arrayDePosicoes.length === props.novaPalavra.length){
+                    props.finalizarJogo();
+                }
             }
             else {
                 console.log("nao")
                 props.setErros(props.erros + 1);
-                props.setImagem(props.imagens[props.erros + 1]);
+                if(props.erros + 1 <7){
+                    props.setImagem(props.imagens[props.erros + 1]);
+                }
+                if(props.erros + 1 === 6){
+                    props.finalizarJogo();
+                }
             }
         }
     }
@@ -41,8 +54,8 @@ export default function Letras(props) {
     return (
         <div className="alfabeto">
             {alfabeto.map((letras) => <button data-test="letter" onClick={() =>
-                letrasPress(letras)} key={letras} disabled={letrasPressionadas.includes(letras) ? true : props.habilitado}
-                className={letrasPressionadas.includes(letras) ? "desabilitado" : props.classe}>{letras} </button>)}
+                letrasPress(letras)} key={letras} disabled={props.letrasPressionadas.includes(letras) ? true : props.habilitado}
+                className={props.letrasPressionadas.includes(letras) ? "desabilitado" : props.classe}>{letras} </button>)}
         </div>
     )
 }

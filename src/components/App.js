@@ -20,8 +20,12 @@ export default function App() {
   const [imagem, setImagem] = useState(imagens[0])
   const [letraAtual, setLetraAtual] = useState("");
   const [novaPalavra, setNovaPalavra] = useState("");
+  const [finalizandoOJogo, setFinalizandoOJogo] = useState(null);
+  const [acertos, setAcertos] = useState(0);
+  const [habilitarInicio, setHabilitarInicio] = useState(false);
+  const [letrasPressionadas, setLetrasPressionadas] = useState([]);
 
-  //const [letrasPressionadas, setLetrasPressionadas] = useState([]);
+
   function iniciar() {
     const posicaoNovaPalavra = Math.round(Math.random() * palavras.length)
     setNovaPalavra(palavras[posicaoNovaPalavra])
@@ -31,13 +35,55 @@ export default function App() {
     setHabilitarTeclas(false);
     setClasseTeclado("habilitado");
     setErros(0);
+    setAcertos(0);
+    setHabilitarInicio(true);
+    setFinalizandoOJogo(null)
+    setImagem(imagens[0]);
+    setLetrasPressionadas([]);
+  }
+  function finalizarJogo(){
+    // alert("finalizando")
+    setHabilitarTeclas(true);
+    setClasseTeclado("desabilitado");
+    setHabilitarInicio(false);
+    if(erros===5){
+      setFinalizandoOJogo("vermelho")
+      setAparecerNaTela(novaPalavra);
+    }
+    else{
+      setFinalizandoOJogo("verde")
+      setAparecerNaTela(novaPalavra);
+    }
+
   }
   
 
   return (
     <div className="corpoJogo">
-      <Jogo imagem={imagem} palavra={aparecerNaTela} iniciaJogo={iniciar} />
-      <Letras habilitado={habilitarTeclas} classe={classeTeclado} setLetraAtual={setLetraAtual} erros={erros} setImagem={setImagem} novaPalavra={novaPalavra} setErros={setErros} imagens={imagens} palavra={aparecerNaTela} setAparecerNaTela={setAparecerNaTela}/>
+      <Jogo imagem={imagem} 
+      palavra={aparecerNaTela} 
+      iniciaJogo={iniciar} 
+      finalizandoOJogo={finalizandoOJogo}
+      habilitado={habilitarInicio}
+      />
+      <Letras 
+        habilitado={habilitarTeclas} 
+        classe={classeTeclado} 
+        setLetraAtual={setLetraAtual} 
+        erros={erros} 
+        setImagem={setImagem} 
+        novaPalavra={novaPalavra} 
+        setErros={setErros} 
+        imagens={imagens} 
+        palavra={aparecerNaTela} 
+        setAparecerNaTela={setAparecerNaTela} 
+        aparecerNaTela={aparecerNaTela} 
+        finalizarJogo={finalizarJogo}
+        acertos={acertos}
+        setAcertos={setAcertos}
+        letrasPressionadas={letrasPressionadas}
+        setLetrasPressionadas={setLetrasPressionadas}
+        />
     </div>
   );
 }
