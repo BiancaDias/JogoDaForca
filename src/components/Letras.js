@@ -40,7 +40,7 @@ export default function Letras(props) {
 
     return (
         <div className="alfabeto">
-            {alfabeto.map((letras) => <button onClick={() =>
+            {alfabeto.map((letras) => <button data-test="letter" onClick={() =>
                 letrasPress(letras)} key={letras} disabled={letrasPressionadas.includes(letras) ? true : props.habilitado}
                 className={letrasPressionadas.includes(letras) ? "desabilitado" : props.classe}>{letras} </button>)}
         </div>
