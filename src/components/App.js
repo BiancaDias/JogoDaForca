@@ -26,6 +26,7 @@ export default function App() {
   const [habilitarInicio, setHabilitarInicio] = useState(false);
   const [letrasPressionadas, setLetrasPressionadas] = useState([]);
   const [chute, setChute] = useState("");
+  const [habilitaChute, setHabilitaChute] = useState(true);
 
 
   function iniciar() {
@@ -41,11 +42,13 @@ export default function App() {
     setFinalizandoOJogo(null)
     setImagem(imagens[0]);
     setLetrasPressionadas([]);
+    setHabilitaChute(false);
   }
   function finalizarJogo(){
     setHabilitarTeclas(true);
     setClasseTeclado("desabilitado");
     setHabilitarInicio(false);
+    setHabilitaChute(true);
     if(erros===5){
       setFinalizandoOJogo("vermelho")
       setAparecerNaTela(novaPalavra);
@@ -70,6 +73,7 @@ export default function App() {
     setClasseTeclado("desabilitado");
     setHabilitarInicio(false);
     setChute("");
+    setHabilitaChute(true);
   }
   
 
@@ -103,6 +107,7 @@ export default function App() {
         setChute={setChute}
         chute={chute}
         testarChute={testarChute}
+        habilitado={habilitaChute}
       />
     </div>
   );

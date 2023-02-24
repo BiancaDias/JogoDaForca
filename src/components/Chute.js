@@ -3,6 +3,7 @@ export default function Chute(props){
         <div className="input-de-chute">
             <p>Já sei a palavra!</p>
             <input 
+            disabled={props.habilitado}
             data-test="guess-input"
             type="text"
             onChange={(e) => props.setChute(e.target.value)}
