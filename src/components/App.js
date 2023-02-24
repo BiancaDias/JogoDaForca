@@ -68,6 +68,7 @@ export default function App() {
     else{
       setFinalizandoOJogo("vermelho")
       setAparecerNaTela(novaPalavra);
+      setImagem(imagens[6])
     }
     setHabilitarTeclas(true);
     setClasseTeclado("desabilitado");
