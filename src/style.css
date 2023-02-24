@@ -81,3 +81,40 @@ img{
 .verde{
   color: #27AE60;
 }
+
+.input-de-chute{
+  min-width: 600px;
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+p{
+  white-space: nowrap;
+  font-size: 20px;
+  line-height: 23px;
+  width: 144px;
+  margin-right: 15px;
+}
+
+input{
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  width: 353px;
+  height: 40px;
+}
+
+.input-de-chute button{
+  width: 100px;
+  height: 40px;
+  background: #E1ECF4;
+  border: 1px solid #7AA7C7;
+  border-radius: 3px;
+  color: #3C76A1;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  margin-left: 15px;
+}
