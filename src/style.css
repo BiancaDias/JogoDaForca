@@ -118,3 +118,7 @@ input{
   line-height: 19px;
   margin-left: 15px;
 }
+
+.displayNone{
+  display: none;
+}
