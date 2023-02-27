@@ -1,6 +1,8 @@
 export default function Letras(props) {
     const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
         "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+    const alfabetoMaiusculo = alfabeto.map(letra => letra.toUpperCase());
     const arrayDePosicoes = [];
     function letrasPress(letra) {
         props.setLetrasPressionadas([...props.letrasPressionadas, letra]);
@@ -42,9 +44,9 @@ export default function Letras(props) {
 
     return (
         <div className="alfabeto">
-            {alfabeto.map((letras) => <button data-test="letter" onClick={() =>
-                letrasPress(letras)} key={letras} disabled={props.letrasPressionadas.includes(letras) ? true : props.habilitado}
-                className={props.letrasPressionadas.includes(letras) ? "desabilitado" : props.classe}>{letras} </button>)}
+            {alfabetoMaiusculo.map((letras) => <button data-test="letter" onClick={() =>
+                letrasPress(letras.toLowerCase())} key={letras} disabled={props.letrasPressionadas.includes(letras.toLowerCase()) ? true : props.habilitado}
+                className={props.letrasPressionadas.includes(letras.toLowerCase()) ? "desabilitado" : props.classe}>{letras} </button>)}
         </div>
     )
 }
